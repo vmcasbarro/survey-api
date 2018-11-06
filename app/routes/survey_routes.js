@@ -80,28 +80,13 @@ router.patch('/surveys/:id', requireToken, (req, res) => {
   // owner, prevent that by deleting that key/value pair
   delete req.body.survey.owner
 
-  Survey.findById(req.params.id)
-    .then(handle404)
-    .then(survey => {
-      // pass the `req` object and the Mongoose record to `requireOwnership`
-      // it will throw an error if the current user isn't the owner
-      requireOwnership(req, survey)
-
-      // the client will often send empty strings for parameters that it does
-      // not want to update. We delete any key/value pair where the value is
-      // an empty string before updating
-      Object.keys(req.body.survey).forEach(key => {
-        if (req.body.survey[key] === '') {
-          delete req.body.survey[key]
-        }
-      })
-
-      // pass the result of Mongoose's `.update` to the next `.then`
-      return survey.update(req.body.survey)
-    })
-    // if that succeeded, return 204 and no JSON
+  Survey.findOneAndUpdate(
+    { _id: req.params.id },
+    {$push: { responses: req.body.survey.responses }}
+  )
+  // if that succeeded, return 204 and no JSON
     .then(() => res.sendStatus(204))
-    // if an error occurs, pass it to the handler
+  // if an error occurs, pass it to the handler
     .catch(err => handle(err, res))
 })
 
