@@ -36,7 +36,7 @@ router.get('/surveys', requireToken, (req, res) => {
       // `surveys` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return surveys.map(survey => survey.toObject())
+      return surveys.map(survey => survey.toObject()).reverse()
     })
     // respond with status 200 and JSON of the surveys
     .then(surveys => res.status(200).json({ surveys: surveys }))
