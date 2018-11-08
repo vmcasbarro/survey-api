@@ -29,11 +29,11 @@ We embraced the scrum process methodology in order to complete this app in 3 day
 
 
 #### User Stories
-As a user I want to be able to sign up, sign in, change my password, and sign out.
-As a signed-in user I want to create a survey for other users to answer.
-As a user I want to delete any of my surveys.
-As a user I want to see all surveys that I can take.
-As a user I want to see survey results.
+* As a user I want to be able to sign up, sign in, change my password, and sign out.
+* As a signed-in user I want to create a survey for other users to answer.
+* As a user I want to delete any of my surveys.
+* As a user I want to see all surveys that I can take.
+* As a user I want to see survey results.
 
 
 #### Wireframes
