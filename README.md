@@ -1,93 +1,64 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
+Back-end: https://blooming-springs-16841.herokuapp.com
+Front-end: https://lost-horizon.github.io/best-survey-client/
+Back-end repo: https://github.com/Lost-Horizon/best-survey-api
+Front-end: https://github.com/Lost-Horizon/best-survey-client
+
 ## Best Survey
 ## (Team Project)
-This or That is a survey app that allows you to create fun, short polls that you can share with your friends, family, and coworkers.
+Best Survey is an app that allows you to create a true/false question and quickly receive answers from anyone using the app.
 
-Users can log in and take surveys voting for this or that! Do you like pumpkin spice lattes or apple cider? Pumpkin pie or apple pie?
+Users can log in and create surveys, or they can answer surveys that have been created by other users.
 
-## Test out the app!
+## Try it out!
 
-To try out the app for yourself, go to the deployed url: https://onwednesdayswecode.github.io/survey-client/
-
-Use the following demo credentials
-**Username:** demo@demo
-**Password:** demo
+To try out the app for yourself, go to the deployed url: https://lost-horizon.github.io/best-survey-client/
 
 ## Development Process
 ### Back-end
-We started out by creating the Mongoose schemas for our User, Survey, and Response collections. Because users can create many surveys, we added a “surveys” field to the User schema that populates with the survey documents the user creates. The Survey schema contains a “responses” field that  populates with the response documents associated with that specific survey, as well as a “creator” field that  populates with the document associated with the user who created the survey. Finally, the Response schema contains a field called “responder” that references the user who responded, as well as a “survey” field that references the survey associated with that response.
-
-Then we built out the routes for User, Survey, and Response to use Mongoose’s `.populate()` function in order to use document references to establish the relationship between users and surveys as well as surveys and responses. In order to use the `.populate()` function, we needed to make sure that document IDs were being pushed to the field in the document referencing the ID. Thus, survey IDs were pushed to the “surveys” field in Users, and response IDs were pushed to the “responses” field in Surveys. Once those arrays contained the ids, the populate function would insert the documents associated with those ids upon receiving a GET request from the client.
-
-### Catalog of Routes:
-
-### Authentication
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/`    | `users#changepw`  |
-| DELETE | `/sign-out/`           | `users#signout`   |
-| GET    | `/users/:id`           | `users#show`      |
-
-
-### Surveys
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/surveys`             | `surveys#create`  |
-| GET    | `/surveys`             | `surveys#index`   |
-| GET    | `/surveys/:id`         | `surveys#show`    |
-| PATCH  | `/surveys/:id`         | `surveys#update`  |
-| DELETE | `/surveys/:id`         | `surveys#destroy` |
-
-### Responses
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/responses`           | `responses#create`|
-| GET    | `/responses`           | `responses#index` |
+This back end of this project is written in JavaScript using Mongoose and MongoDB. We used Mongoose to create schemas for users, surveys, and responses. We structured our database to have nested documents (responses) inside surveys since a survey can have multiple responses. This seemed like the logical choice instead of using `.populate()`, since responses will only be retrieved from within their respective survey.
 
 ### Front-end
-Our primary focus was to complete user functionality on the front-end first. Before thinking about styling, our first step was to make sure a user could complete CRUD actions and prevent crossing scripting. We started by using handlebars to display information coming from the database to prevent any malicious intent. Sticking to our MVP, we did not focus heavily on styling until a user could successfully complete all CRUD actions. At every stage, our front-end design was driven by our desire to create the best user experience. As we created elements on the page we utilized the convenience of bootstrap to style elements. After much of our project’s MVP was coming to a close, we began to explore logo options and basic styling options. We created a logo on Canva that conveyed the “pick between two” objective of the app. We used this logo for the sign in page and our favicon following the pattern of many well established companies. We gave the page basic styling based on best practices of margins to center the elements, proper spacing, and proper font size. We made the background a split color just as the logo using linear gradient in CSS. We decided that, for best user experience, displaying pie charts instead of numbers would be the optimal way to see results. We used AnyChart to create a graph. AnyChart is a lightweight JavaScript tool for creating graphs. We created a JavaScript file that integrates the information for our handlebars file to produce a graph that represents the data of the survey. This makes a great data visualization for the user. Lastly, we styled the change password card to appear similar to a modal. We had decided against using modals in this project because they are difficult to style and they do not provide a great mobile user experience. We created a nice drop down of the change password card that slides off similar to how a modal disappears for a nice user experience.
+The front end was created with a single-page design, and focused on providing a pleasant user experience. Styling was not heavily focused on, since the priority was meeting MVP specifications. However, we did manage to create a user experience that allows a user to quickly manage their surveys, view all surveys created, and answer surveys. We tried to provided intuitive user feedback that was also functional, but displaying the targeted data when a form is submitted or a button is pressed.
 
-In the future, we’d like to style more elements and make sure the user experience is flawless. Now that users and use the app without bugs, the next step is to enhance the design.
+In the future, we’d like to give better visual feedback to the user -- especially using graphs or charts to display results instaed of listing yes/no responses.
 
 
 ### Planning Process
-We embraced the scrum process methodology in order to complete This or That within the span of three days.  We started our planning with a long discussion in which we narrowed down the scope and functionality of what we were going to build.  We then set up a Trello board to use as a task manager to keep us organized and on schedule.  Each morning we would have an initial stand up meeting where team members would discuss goals for the day, and anything they were stuck on from the previous day.  At the end of each day we also had a meeting to review what was accomplished, and revisited  our to-do list in order to move any tasks around, and make a plan for the next day.  A proper git workflow was crucial to easily integrate all of our feature branches.  Whenever someone opened a pull request, there was always at least one other team member going over their code before the pull request was approved and that branch merged into our development branch.  With team members working on different aspects and in different locations, good communication was the key to our success on this project.
+We embraced the scrum process methodology in order to complete this app in 3 days.  We started by taking ample time to discuss roles, expectations, and finally, technical specs we hoped to achieve as a final project. Most of our work focused on re-scoping our initial ideas to meet MVP specifications. We also decided to add structure to our workday in the form of three meetings -- stand-up in the mornings, check-in after lunch, and retro at the end of the day. These meetings helped keep us all on the same page and kept our progress steady.
 
 
 #### User Stories
 As a user I want to be able to sign up, sign in, change my password, and sign out.
-As a registered user I want to create a survey for other signed in users to take.
-As a registered user I want to edit my surveys.
-As a registered user I want to delete my surveys.
-As a registered user I want to see all surveys that I can take.
-As a registered user I want to see results from a survey after I submit a response.
+As a signed-in user I want to create a survey for other users to answer.
+As a user I want to delete any of my surveys.
+As a user I want to see all surveys that I can take.
+As a user I want to see survey results.
 
 
 #### Wireframes
-[Wireframe images](https://imgur.com/a/LcjX5FT#)
+https://www.figma.com/proto/TTtrBYCQqQorpTo64GhAs9/Project-3-Wireframe-1?node-id=0%3A1&scaling=min-zoom&redirected=1
 
 #### Entity Relationship Diagrams (ERD)
-We decided to establish one-to-many relationships between users and surveys, as well as surveys and responses using document references. s. Users have many surveys, surveys have many responses. User can create and edit their own surveys, but any user can take surveys.
+Since we were using nested documents inside a non-relational database, our entity relationships looked like this:
 
+```js
+survey {
+  question: "a question",
+  responses: [
+    { answer: "yes/no" },
+    { answer: "yes/no" }
+  ],
+  owner: "a user"
+  }
+}
+```
 
 ### Future Goals
-There are a few ways we would like to see This or That grow in the future.  One option would be to have custom urls to share individual surveys with your friends or family.  Currently, a user can take a survey as many times as they would like, so we want to add a function to limit a user to only responding once to a survey.  The site could also be set up to have an option to view surveys one at a time, and could randomly shuffle between surveys.
+As a project, our survey has met a solid version-1 level. However, there are several features we would love to implement in future iterations.
 
-A challenge we faced was with the feature to edit a survey, and what that would mean for the accuracy of the responses.  Currently, a user can update a survey and any responses from before will be included in the results.  We realize that this might not be the ideal functionality of this feature.  We discussed whether it was best to ignore all responses before the survey was updated, but decided it was better to finish the feature and discuss accuracy logistics at a later date.
-
-
-## Links
-
-* [Back-end repo](https://github.com/#)
-* [Front-end repo](https://github.com/#)
-* [Heroku deployment](https://#.herokuapp.com/)
-* [Front-end deployed](https://#.github.io/#/)
+Graph/chart results for surverys would provide a more user-friendly experience. Additionally, we would like to hide responses to a survey until the user has provided an answer to avoid potentially swaying the user with existing responses.
 
 ## Built With
 
@@ -96,14 +67,13 @@ A challenge we faced was with the feature to edit a survey, and what that would 
 * [MongoDB](https://www.mongodb.com/) - Back-end database
 * [Bootstrap/CSS/Sass](getbootstrap.com/) - Styling
 * [JavaScript](https://www.javascript.com/) - Programming Language
-* [Scrum](https://www.scrum.org/resources/what-is-scrum) - Workflow/ work management
 
 
 ## Authors
 
-* **Doo Bin Im** - *Project Lead* - [Github](https://github.com/#)
-* **Alfredo Pabon** - *Front-end Lead* - [Github](https://github.com/#)
-* **Adam Miller** - *Back-end Lead* - [Github](https://github.com/#)
+* **Doo Bin Im** - *Project Lead* - [Github](https://github.com/doobin)
+* **Alfredo Pabon** - *Front-end Lead* - [Github](https://github.com/alfredrafael)
+* **Adam Miller** - *Back-end Lead* - [Github](https://github.com/Amillz70)
 * **Vince Casbarro** - *Quality Assurance* - [Github](https://github.com/vmcasbarro)
 
 
