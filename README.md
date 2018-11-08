@@ -5,8 +5,7 @@ Front-end: https://lost-horizon.github.io/best-survey-client/ <br>
 Back-end repo: https://github.com/Lost-Horizon/best-survey-api <br>
 Front-end: https://github.com/Lost-Horizon/best-survey-client
 
-## Best Survey
-## (Team Project)
+## Best Survey (Team Project)
 Best Survey is an app that allows you to create a true/false question and quickly receive answers from anyone using the app.
 
 Users can log in and create surveys, or they can answer surveys that have been created by other users.
