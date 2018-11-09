@@ -37,6 +37,7 @@ We embraced the scrum process methodology in order to complete this app in 3 day
 
 
 #### Wireframes
+click the link below for an interactive wireframe/mockup on figma!
 https://www.figma.com/proto/TTtrBYCQqQorpTo64GhAs9/Project-3-Wireframe-1?node-id=0%3A1&scaling=min-zoom&redirected=1
 
 #### Entity Relationship Diagrams (ERD)
