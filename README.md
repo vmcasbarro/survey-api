@@ -54,6 +54,20 @@ survey {
 }
 ```
 
+## API End Points
+
+| Verb   | URI Pattern            | Constroller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/sign-up`             | `users#signup`    |
+| POST   | `/sign-in`             | `users#signin`    |
+| DELETE | `/sign-out`            | `users#signout`   |
+| PATCH  | `/change-password`     | `users#changepw`  |
+| GET    | `/surveys`               | `surveys#index`     |
+| POST   | `/surveys`               | `surveys#create`    |
+| PATCH  | `/surveys/:id`           | `surveys#update`    |
+| DELETE | `/surveys/:id`            | `surveys#delete`   |
+
+
 ### Future Goals
 As a project, our survey has met a solid version-1 level. However, there are several features we would love to implement in future iterations.
 
