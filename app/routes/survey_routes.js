@@ -80,10 +80,16 @@ router.patch('/surveys/:id', requireToken, (req, res) => {
   // owner, prevent that by deleting that key/value pair
   delete req.body.survey.owner
 
-  Survey.findOneAndUpdate(
+  // ensure that target survey exists, otherwise throw 404 error
+  Survey.findById(req.params.id)
+    .then(handle404)
+
+  // new way of adding a response
+  Survey.update(
     { _id: req.params.id },
-    {$push: { responses: req.body.survey.responses }}
+    { $push: { responses: req.body.survey.responses[0] } }
   )
+
   // if that succeeded, return 204 and no JSON
     .then(() => res.sendStatus(204))
   // if an error occurs, pass it to the handler
