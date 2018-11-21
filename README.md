@@ -9,7 +9,7 @@ This was initially a group project that was completed over a span of 3 days. I w
 
 Back-end: https://blooming-springs-16841.herokuapp.com <br>
 Front-end: https://lost-horizon.github.io/best-survey-client/ <br>
-Back-end repo: https://github.com/Lost-Horizon/survey-api <br>
+Back-end repo: https://github.com/Lost-Horizon/best-survey-api <br>
 Front-end: https://github.com/Lost-Horizon/best-survey-client
 
 ## Best Survey (Team Project)
