@@ -24,6 +24,10 @@ const surveySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  author: {
+    type: String,
+    required: true
+  },
   responses: [responseSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
