@@ -62,6 +62,9 @@ router.post('/surveys', requireToken, (req, res) => {
   // set owner of new survey to be current user
   req.body.survey.owner = req.user.id
 
+  // set author of new survey to be user's email/username
+  req.body.survey.author = req.user.email
+
   Survey.create(req.body.survey)
     // respond to succesful `create` with status 201 and JSON of new "survey"
     .then(survey => {
